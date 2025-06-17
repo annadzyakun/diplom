@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маршрутный лист</title>
+    <link rel="stylesheet" href="routelist.css">
+        <link rel="icon" href="лого.png" type="png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="lk-header">
+    <div class="lk-header-left">
+        <div class="lk-menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="lk-logo">
+            Абсолют
+            <span class="lk-logo-desc">ЛИЧНЫЙ КАБИНЕТ</span>
+        </div>
+        
+        
+    </div>
+  <div class="lk-header-right">
+        <span id="current-time" class="lk-current-time"></span>
+        <div class="lk-user-info">
+            <span id="user-name"></span>
+            <div class="lk-user-avatar">
+                <img src="" alt="Аватар">
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <aside class="lk-sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="profile_man.html">
+                    <img src="https://i.postimg.cc/9Fnyg5BK/icons8-48.png" alt="Профиль">
+                    <span>Профиль</span>
+                </a>
+            </li>
+                       <li>
+                <a href="routlist_man.html">
+                    <img src="https://i.postimg.cc/024Pzc87/route-5522240.png" alt="Маршрутный лист">
+                    <span>Маршрутный лист</span>
+                </a>
+            </li>
+
+          
+            <li>
+                <a href="istoria.html">
+                    <img src="https://i.postimg.cc/0jJZckwk/contract-16632018.png" alt="История">
+                    <span>История</span>
+                </a>
+            </li>
+            <li>
+                <a href="registration.html">
+                    <img src="https://i.postimg.cc/T30Z7jg2/download-308320.png" alt="Регистрация">
+                    <span>Регистрация</span>
+                </a>
+            </li>
+        </ul>
+        <div class="logout-icon">
+            <a href="avtoriz.html">
+                <img src="https://i.postimg.cc/1znwsfzZ/i-12.webp" alt="Выход">
+                <span>Выход</span>
+            </a>
+        </div>
+    </aside>
+   <main>
+    <div class="container">
+        <div class="date-selector">
+            <button id="prev-week"><i class="fas fa-chevron-left"></i></button>
+            <span id="date-range">02.06.2025 - 08.06.2025</span>
+            <button id="next-week"><i class="fas fa-chevron-right"></i></button>
+            <div id="current-date">Среда, 04 Июня</div>
+        </div>
+        <table id="schedule">
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th data-day="0">Понедельник 02.06</th>
+                    <th data-day="1">Вторник 03.06</th>
+                    <th data-day="2">Среда 04.06</th>
+                    <th data-day="3">Четверг 05.06</th>
+                    <th data-day="4">Пятница 06.06</th>
+                    <th data-day="5">Суббота 07.06</th>
+                    <th data-day="6">Воскресенье 08.06</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+            <!-- Модальное окно для деталей заказа -->
+            <div id="order-details-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Детали заказа</h2>
+                    <div id="order-details-content">
+                        <!-- Информация о заказе будет загружаться здесь -->
+                    </div>
+                    <button id="assign-employee-button" data-order-id="" style="display: none;">+ Добавить сотрудника</button>
+                    <div id="assign-employee-form" style="display: none;"> <!-- Форма будет скрыта по умолчанию -->
+                        <label for="employee-select">Выберите сотрудника:</label>
+                        <select id="employee-select">
+                            <!-- Опции будут добавлены здесь с помощью JavaScript -->
+                        </select>
+                        <button id="confirm-assign">Назначить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<style>
+    /* Стили для модального окна */
+    .modal {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed; /* Фиксированное положение */
+        z-index: 1; /* Поверх всего */
+        left: 0;
+        top: 0;
+        width: 100%; /* Полная ширина */
+        height: 100%; /* Полная высота */
+        overflow: auto; /* Включить прокрутку, если необходимо */
+        background-color: rgba(0,0,0,0.4); /* Черный с прозрачностью */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% сверху и по центру */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Можно настроить размер */
+        position: relative; /* Для позиционирования кнопки закрытия */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;  /* Абсолютное позиционирование */
+        top: 0;  /* Прижимаем к верху */
+        right: 10px; /* Отступ справа */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const scheduleTable = document.getElementById('schedule').getElementsByTagName('tbody')[0];
+        const currentDateDiv = document.getElementById('current-date');
+        const dateRangeSpan = document.getElementById('date-range');
+        const prevWeekButton = document.getElementById('prev-week');
+        const nextWeekButton = document.getElementById('next-week');
+        const modal = document.getElementById("order-details-modal");
+        const modalContent = document.getElementById("order-details-content");
+        const closeModal = document.querySelector(".close");
+        const assignEmployeeButton = document.getElementById("assign-employee-button");
+        const assignEmployeeForm = document.getElementById("assign-employee-form");
+        const employeeSelect = document.getElementById("employee-select");
+        const confirmAssignButton = document.getElementById("confirm-assign");
+
+        let currentDate = new Date();
+        let currentWeekStart;
+        let currentWeekEnd;
+        let currentOrderId; // Store the order ID for assignment
+        // Получаем информацию о пользователе из localStorage
+        const userId = localStorage.getItem('userId');
+        const userRole = localStorage.getItem('userRole'); // Получаем роль пользователя
+
+        // Если пользователь не авторизован, перенаправляем на страницу входа
+        if (!userId) {
+            window.location.href = 'avtoriz.html'; // Замените на ваш путь к странице авторизации
+            console.log("Пользователь не авторизован.");
+            return;
+        }
+         // -----------------------------------------------------
+        //  Функция для получения данных пользователя
+        async function fetchUserData(userId) {
+            try {
+                const response = await fetch(`http://localhost:3001/user/${userId}`); // Замените на ваш URL
+                if (!response.ok) {
+                    throw new Error(`Ошибка получения данных пользователя: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Ошибка при получении данных пользователя:', error);
+                return null;
+            }
+        }
+
+        // Отображение имени пользователя и аватара в шапке
+        const userNameSpan = document.getElementById('user-name');
+        const userAvatar = document.querySelector('.lk-user-avatar img');
+
+        async function displayUserName() {
+            const userData = await fetchUserData(userId);
+            if (userData) {
+                userNameSpan.textContent = `${userData.surname} ${userData.name[0]}.`;
+                 if (userData.photo_path) {
+                    userAvatar.src = `http://localhost:3001${userData.photo_path}`;
+                } else {
+                    userAvatar.src = 'https://via.placeholder.com/40'; // Замените на ваш путь к аватарке по умолчанию
+                }
+            }
+        }
+
+        displayUserName();
+
+        //  Скрываем кнопку "Добавить сотрудника" для клинеров
+        if (userRole === 'cleaner') {
+            assignEmployeeButton.style.display = 'none';
+        }
+
+        // Функция для форматирования даты
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+            const year = date.getFullYear();
+            return `${day}.${month}`;
+        }
+
+        // Функция для вычисления начала и конца недели
+        function calculateWeekRange(date) {
+            const dayOfWeek = date.getDay(); // 0 (Sun) to 6 (Sat)
+            const diff = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // adjust when day is sunday
+
+            currentWeekStart = new Date(date.setDate(diff));
+            currentWeekEnd = new Date(currentWeekStart);
+            currentWeekEnd.setDate(currentWeekStart.getDate() + 6);
+
+            return {
+                start: new Date(currentWeekStart), // Создаем новые объекты Date
+                end: new Date(currentWeekEnd) // Создаем новые объекты Date
+            };
+        }
+
+        // Функция для отображения текущей даты и диапазона дат
+        function displayDates() {
+            const weekRange = calculateWeekRange(new Date(currentDate)); // Создаем новый объект Date
+            const todayFormatted = formatDate(new Date(currentDate)).slice(0, 5) + ' Июня';
+
+            currentDateDiv.textContent = getDayOfWeek(new Date(currentDate)) + ', ' + todayFormatted; // Display today's date
+
+            const startFormatted = formatDate(weekRange.start);
+            const endFormatted = formatDate(weekRange.end);
+
+            dateRangeSpan.textContent = `${startFormatted}.${currentDate.getFullYear()} - ${endFormatted}.${currentDate.getFullYear()}`;
+        }
+
+        function getDayOfWeek(date) {
+            const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+            return days[date.getDay()];
+        }
+
+        // Функция для получения данных из таблицы orders
+        async function fetchOrdersData(startDate, endDate) {
+            try {
+                let url = `http://localhost:3002/orders?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`; // Замените URL
+
+                // Добавляем cleanerId в URL, если он есть
+                if (userRole === 'cleaner' && userId) {
+                    url += `&cleanerId=${userId}`;
+                }
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Ошибка получения данных: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Ошибка при получении данных о расписании:', error);
+                return [];
+            }
+        }
+
+        // Функция для получения детальной информации о заказе
+        async function fetchOrderDetails(orderId) {
+            try {
+                const response = await fetch(`http://localhost:3002/order/${orderId}`); // Замените URL
+                if (!response.ok) {
+                    throw new Error(`Ошибка получения деталей заказа: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Ошибка при получении деталей заказа:', error);
+                return null;
+            }
+        }
+
+        // Функция для получения списка клинеров
+        async function fetchCleaners() {
+            try {
+                const response = await fetch('http://localhost:3002/cleaners'); // Замените URL
+                if (!response.ok) {
+                    throw new Error(`Ошибка получения списка сотрудников: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Ошибка при получении списка сотрудников:', error);
+                return [];
+            }
+        }
+
+        // Функция для создания расписания
+        async function createSchedule() {
+            // Clear existing schedule
+            scheduleTable.innerHTML = '';
+
+            const weekRange = calculateWeekRange(new Date(currentDate)); // Создаем новый объект Date
+            const startDate = weekRange.start;
+            const endDate = weekRange.end;
+
+            const ordersData = await fetchOrdersData(startDate, endDate);
+
+            // Create schedule rows
+            for (let hour = 7; hour <= 20; hour++) {
+                const row = document.createElement('tr');
+
+                // Create time slot cell
+                const timeCell = document.createElement('td');
+                const startTime = String(hour).padStart(2, '0') + ':00';
+                const endTime = String(hour + 1).padStart(2, '0') + ':00';
+                timeCell.textContent = `${startTime} - ${endTime}`;
+                row.appendChild(timeCell);
+
+                // Create empty cells for each day
+                for (let day = 0; day < 7; day++) {
+                    const dayCell = document.createElement('td');
+                    const dayDate = new Date(startDate);
+                    dayDate.setDate(startDate.getDate() + day);
+                    const formattedDate = dayDate.toISOString().slice(0, 10); // YYYY-MM-DD
+
+                    // Find order for this date and time
+                    const order = ordersData.find(item => {
+                        const itemDate = new Date(item.cleaning_date).toISOString().slice(0, 10);
+                        const itemTime = item.cleaning_time.slice(0, 5); // HH:MM
+                        return itemDate === formattedDate && itemTime === startTime.slice(0, 5);
+                    });
+
+                    if (order) {
+                        dayCell.textContent = order.cleaning_type;
+                        dayCell.classList.add('clickable-cell');
+                        dayCell.dataset.orderId = order.id; // Store order ID
+                    }
+
+                    row.appendChild(dayCell);
+                }
+
+                scheduleTable.appendChild(row);
+            }
+
+            // Обновляем даты в заголовках дней
+            const dayHeaders = document.querySelectorAll('#schedule th[data-day]');
+            dayHeaders.forEach(header => {
+                const dayOffset = parseInt(header.dataset.day);
+                const dayDate = new Date(startDate);
+                dayDate.setDate(startDate.getDate() + dayOffset);
+                header.textContent = getDayOfWeek(dayDate).substring(0, 10) + ' ' + formatDate(dayDate);
+            });
+
+            // Add click event listener to the schedule cells
+            const clickableCells = document.querySelectorAll('.clickable-cell');
+            clickableCells.forEach(cell => {
+                cell.addEventListener('click', async () => {
+                    const orderId = cell.dataset.orderId;
+                    currentOrderId = orderId; // Save the order ID
+                    const orderDetails = await fetchOrderDetails(orderId);
+                    if (orderDetails) {
+                        displayOrderDetails(orderDetails);
+                        modal.style.display = "block";
+                    }
+                    //assignEmployeeButton.dataset.orderId = orderId; // Store orderId on the button
+                });
+            });
+        }
+
+        // Функция для отображения деталей заказа в модальном окне
+        function displayOrderDetails(order) {
+            let cleanerInfo = "Не назначен";  // default text
+            if (order.cleaner_name && order.cleaner_surname) {
+                cleanerInfo = `${order.cleaner_surname} ${order.cleaner_name}`;
+            }
+            modalContent.innerHTML = `
+                <p>ID: ${order.id}</p>
+                <p>Площадь: ${order.square}</p>
+                <p>Тип уборки: ${order.cleaning_type}</p>
+                <p>Периодичность: ${order.periodicity}</p>
+                <p>Дата уборки: ${order.cleaning_date}</p>
+                <p>Время уборки: ${order.cleaning_time}</p>
+                <p>Дополнительные опции: ${order.additional_options}</p>
+                <p>Комментарий: ${order.order_comment}</p>
+                <p>Общая стоимость: ${order.total_cost}</p>
+                <p>ID клиента: ${order.customer_id}</p>
+                <p>Дата заказа: ${order.order_date}</p>
+                <p>Исполнитель: ${cleanerInfo}</p>  <!-- Добавляем информацию об исполнителе -->
+            `;
+        }
+
+        // Отображение/скрытие формы для добавления сотрудника
+        assignEmployeeButton.style.display = (userRole === 'manager') ? 'block' : 'none';  // Показываем только для менеджера
+
+        assignEmployeeButton.addEventListener('click', async () => {
+            if (assignEmployeeForm.style.display === 'none') {
+                // Show the form
+                assignEmployeeForm.style.display = 'block';
+
+                // Populate the employee select options
+                await populateCleanerSelect();
+            } else {
+                // Hide the form
+                assignEmployeeForm.style.display = 'none';
+            }
+        });
+
+        // Function to populate the cleaner select options
+        async function populateCleanerSelect() {
+            const cleaners = await fetchCleaners();
+            employeeSelect.innerHTML = ''; // Clear existing options
+
+            cleaners.forEach(cleaner => {
+                const option = document.createElement('option');
+                option.value = cleaner.id;
+                option.textContent = cleaner.surname + ' ' + cleaner.name; // Display surname and name
+                employeeSelect.appendChild(option);
+            });
+        }
+
+        // Обработчик события для кнопки "Назначить"
+        confirmAssignButton.addEventListener('click', async () => {
+            const selectedCleanerId = employeeSelect.value;
+            if (!selectedCleanerId) {
+                alert('Пожалуйста, выберите уборщика.');
+                return;
+            }
+
+            if (!currentOrderId) {
+                alert('Пожалуйста, выберите заказ.');
+                return;
+            }
+            // Вызов функции для отправки запроса на бэкенд для назначения уборщика
+            await assignCleanerToOrder(currentOrderId, selectedCleanerId);
+
+            // Закрываем форму и модальное окно
+            assignEmployeeForm.style.display = 'none';
+            modal.style.display = "none";
+
+            // Обновляем расписание (или конкретную ячейку)
+            createSchedule(); // Проще обновить всё расписание
+            // Или обновить конкретную ячейку, если это необходимо
+
+        });
+
+
+        // Функция для назначения уборщика заказу (вызов API)
+        async function assignCleanerToOrder(orderId, cleanerId) {
+            try {
+                const response = await fetch('http://localhost:3002/assign-cleaner', { // Замените URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ orderId, cleanerId }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Ошибка при назначении уборщика: ${response.status}`);
+                }
+                alert('Уборщик успешно назначен!'); // Или другое сообщение
+                // После успешного назначения обновим расписание
+                createSchedule();
+            } catch (error) {
+                console.error('Ошибка при назначении уборщика:', error);
+                alert('Не удалось назначить уборщика. Пожалуйста, попробуйте еще раз.');
+            }
+        }
+
+        // Закрытие модального окна
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+            assignEmployeeForm.style.display = "none"; // Hide the assignment form as well
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                assignEmployeeForm.style.display = "none"; // Hide the assignment form as well
+            }
+        }
+
+          // Код для работы с меню (открытия/закрытия)
+             // Код для работы с меню (открытия/закрытия)
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContainer = document.querySelector('.main-container');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mainContainer.classList.toggle('sidebar-collapsed');
+        });
+        
+        // Previous week button click handler
+        prevWeekButton.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() - 7);
+            displayDates();
+            createSchedule();
+        });
+
+        // Next week button click handler
+        nextWeekButton.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() + 7);
+            displayDates();
+            createSchedule();
+        });
+
+        displayDates();
+        createSchedule();
+    });
+</script>
+</body>
+</html>

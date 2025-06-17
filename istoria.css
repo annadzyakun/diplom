@@ -1,0 +1,620 @@
+ table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #555;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 24px;
+            color: #4682b4;
+        }
+ #order-details-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .filter-panel {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Выравнивание элементов слева */
+            flex-wrap: wrap;
+        }
+
+        .filter-panel > div {
+            display: flex;
+            align-items: center;
+            margin-right: 10px; /* Отступ между элементами */
+        }
+
+        .filter-panel label {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        .filter-panel input[type="date"],
+        .filter-panel select {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            width: auto;
+        }
+
+        /* Стили для кнопок-изображений */
+        .filter-panel .img-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .filter-panel .img-button:hover {
+            opacity: 0.8;
+        }
+
+        .filter-panel .img-button img {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+        }
+
+        /* Медиа-запрос для печати */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #orders-table, #orders-table * {
+                visibility: visible;
+            }
+            .container {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+
+
+
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5; /* Изменено на синий цвет */
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Занимает всю высоту экрана */
+}
+
+/* Header */
+.lk-header {
+    background-color: #464f96;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+
+.lk-header-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.lk-logo {
+    font-family: 'Spectral SC', serif; /* Новый шрифт */
+    font-size: 2.5rem; /* Значительно больше */
+    font-weight: bold;
+    padding-left: 50px; /* Добавьте это */
+    margin-right: 50px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-logo-desc {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-search-container {
+    margin-left: auto;
+    margin-right: 20px;
+    position: relative;
+}
+
+.lk-search-input {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.lk-search-input::placeholder {
+    color: #eee;
+}
+
+.lk-search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+}
+
+.lk-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.lk-current-time {
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.lk-user-info span {
+    margin-right: 10px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 10px;
+    border: 2px solid #ddd;
+}
+
+.lk-user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Main container */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar */
+.lk-sidebar {
+    width: 250px;
+    background-color: #d9edf7;
+    padding: 20px 0;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.lk-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lk-sidebar li {
+    padding: 10px; /* Add padding to li */
+    margin-bottom: 10px; /* Add margin to li */
+}
+
+.lk-sidebar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    margin: 5px 10px;
+}
+
+.lk-sidebar a:hover {
+    background-color: #b0d0df;
+    color: #007bff;
+}
+
+.lk-sidebar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    opacity: 0.7;
+}
+main {
+    flex: 1;
+    background-color: #464f96;
+    padding: 20px;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+/* Collapsed Sidebar state */
+.main-container.sidebar-collapsed .lk-sidebar {
+    transform: translateX(-100%);
+    width: 0;
+    display: none;
+    box-shadow: none;
+}
+
+.main-container.sidebar-collapsed main {
+    margin-left: 0;
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Social media icons container */
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    margin-top: auto;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    background-color: #464f96;
+    padding: 20px;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+/* Collapsed Sidebar state */
+.main-container.sidebar-collapsed .lk-sidebar {
+    transform: translateX(-100%);
+    width: 0;
+    display: none;
+    box-shadow: none;
+}
+
+.main-container.sidebar-collapsed main {
+    margin-left: 0;
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.left-section {
+    width: 250px;
+    text-align: center;
+}
+
+.right-section {
+    flex-grow: 1;
+}
+
+/* Profile Image and related styles */
+.upload-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.position {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Contact Card Styles */
+.contact-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.contact-edit {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.contact-edit:hover {
+    color: #0056b3;
+}
+
+.name-info,
+.contact-details p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-details img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    filter: brightness(1.2);
+}
+
+/* Edit Profile Form Styles */
+.edit-profile-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f8f9fa;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#save-profile-button,
+#cancel-edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+#cancel-edit-button {
+    background-color: #aaa;
+}
+
+#save-profile-button:hover {
+    background-color: #0056b3;
+}
+
+#cancel-edit-button:hover {
+    background-color: #777;
+}
+
+/* Menu Toggle Button */
+.lk-menu-toggle {
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.lk-menu-toggle div {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Styles for the active state (when the menu is open) */
+.lk-menu-toggle.active div:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: #fff;
+}
+
+.lk-menu-toggle.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.lk-menu-toggle.active div:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: #fff;
+}
+/* Стили для контейнера кнопки выхода */
+.logout-container {
+    margin-top: auto; /* Прижимаем к низу сайдбара */
+    padding: 10px;
+    border-top: 1px solid #444; /* Разделительная линия */
+}
+
+/* Стили для самой кнопки выхода */
+.logout-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #dc3545; /* Красный цвет для привлечения внимания */
+    transition: background-color 0.2s ease;
+    margin: 5px 10px;
+}
+
+.logout-button:hover {
+    background-color: #c82333; /* Более темный красный при наведении */
+}
+
+.logout-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    opacity: 0.7;
+}
+
+/* Стиль для иконки */
+.logout-icon img {
+    width: 30px; /* задайте нужный размер */
+    height: 30px;
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="regis.css">
+        <link rel="icon" href="лого.png" type="png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+    <style>
+      /* General Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+      }
+
+      .container {
+          width: 800px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+          text-align: center;
+          color: #333;
+      }
+
+      .form-row {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 15px;
+      }
+
+      .form-group {
+          width: 48%;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 5px;
+          color: #555;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="date"] {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-size: 14px;
+      }
+
+      button {
+          background-color: #8B4513;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          display: block;
+          margin: 20px auto;
+          width: fit-content; /* Adjust width to content */
+      }
+
+      button:hover {
+          background-color: #A0522D;
+      }
+
+      .error {
+          color: red;
+          margin-top: 5px;
+      }
+  </style>
+
+<body>
+
+<header class="lk-header">
+    <div class="lk-header-left">
+        <div class="lk-menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="lk-logo">
+            Абсолют
+            <span class="lk-logo-desc">ЛИЧНЫЙ КАБИНЕТ</span>
+        </div>
+        
+        
+    </div>
+  <div class="lk-header-right">
+        <span id="current-time" class="lk-current-time"></span>
+        <div class="lk-user-info">
+            <span id="user-name"></span>
+           
+        </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <aside class="lk-sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="profile_man.html">
+                    <img src="https://i.postimg.cc/9Fnyg5BK/icons8-48.png" alt="Профиль">
+                    <span>Профиль</span>
+                </a>
+            </li>
+                       <li>
+                <a href="routlist_man.html">
+                    <img src="https://i.postimg.cc/024Pzc87/route-5522240.png" alt="Маршрутный лист">
+                    <span>Маршрутный лист</span>
+                </a>
+            </li>
+
+          
+            <li>
+                <a href="istoria.html">
+                    <img src="https://i.postimg.cc/0jJZckwk/contract-16632018.png" alt="История">
+                    <span>История</span>
+                </a>
+            </li>
+            <li>
+                <a href="registration.html">
+                    <img src="https://i.postimg.cc/T30Z7jg2/download-308320.png" alt="Регистрация">
+                    <span>Регистрация</span>
+                </a>
+            </li>
+        </ul>
+        <div class="logout-icon">
+            <a href="avtoriz.html">
+                <img src="https://i.postimg.cc/1znwsfzZ/i-12.webp" alt="Выход">
+                <span>Выход</span>
+            </a>
+        </div>
+    </aside>
+<main>
+  <div class="container">
+    <h2>Регистрация сотрудников</h2>
+    <form id="registrationForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="username">Имя пользователя:</label>
+          <input type="text" id="username" name="username" required>
+          <div class="error" id="usernameError"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Адрес электронной почты:</label>
+          <input type="email" id="email" name="email" required>
+          <div class="error" id="emailError"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" required>
+          <div class="error" id="passwordError"></div>
+        </div>
+        <div class="form-group">
+          <label for="surname">Фамилия:</label>
+          <input type="text" id="surname" name="surname" required>
+          <div class="error" id="surnameError"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Телефон:</label>
+          <input type="text" id="phone" name="phone">
+          <div class="error" id="phoneError"></div>
+        </div>
+        <div class="form-group">
+          <label for="name">Имя:</label>
+          <input type="text" id="name" name="name" required>
+          <div class="error" id="nameError"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="patronymic">Отчество:</label>
+          <input type="text" id="patronymic" name="patronymic">
+          <div class="error" id="patronymicError"></div>
+        </div>
+        <div class="form-group">
+          <label for="birthdate">Дата рождения:</label>
+          <input type="date" id="birthdate" name="birthdate">
+          <div class="error" id="birthdateError"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dolzhnost">Должность:</label>
+        <input type="text" id="dolzhnost" name="dolzhnost" required>
+        <div class="error" id="dolzhnostError"></div>
+      </div>
+
+      <button type="submit">Регистрация</button>
+      <div class="error" id="generalError"></div>
+    </form>
+  </div>
+</main>
+
+<script>
+
+
+
+
+
+
+    function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+    }
+
+    setInterval(updateTime, 60000);
+    updateTime();
+
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    const form = document.getElementById('registrationForm');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        const surname = document.getElementById('surname').value;
+        const phone = document.getElementById('phone').value;
+        const name = document.getElementById('name').value;
+        const patronymic = document.getElementById('patronymic').value;
+        const birthdate = document.getElementById('birthdate').value;
+        const dolzhnost = document.getElementById('dolzhnost').value;
+
+        // Преобразуем должность в роль
+        let role = 'user'; // Роль по умолчанию
+        if (dolzhnost === 'Менеджер') {
+            role = 'manager';
+        } else if (dolzhnost === 'Клинер') {
+            role = 'cleaner';
+        }
+
+        const userData = {
+            username: username,
+            password: password,
+            email: email,
+            surname: surname,
+            phone: phone,
+            name: name,
+            patronymic: patronymic,
+            birthdate: birthdate,
+            dolzhnost: dolzhnost,
+            role: role,  // <--- Отправляем преобразованную роль
+            salt: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Registration successful!');
+                form.reset();
+            } else {
+                console.error('Registration failed:', response.status);
+                alert('Регистрация не удалась. Пожалуйста, попробуйте еще раз.');
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
+            generalError.textContent = 'An error occurred. Please try again later.';
+        }
+    });
+
+
+
+
+
+     // Код для работы с меню (открытия/закрытия)
+             // Код для работы с меню (открытия/закрытия)
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContainer = document.querySelector('.main-container');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mainContainer.classList.toggle('sidebar-collapsed');
+        });
+
+</script>
+</body>
+</html>

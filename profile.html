@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль Клинера</title>
+    <link rel="stylesheet" href="profile.css">
+        <link rel="icon" href="лого.png" type="png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="lk-header">
+    <div class="lk-header-left">
+        <div class="lk-menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="lk-logo">
+            Абсолют
+            <span class="lk-logo-desc">ЛИЧНЫЙ КАБИНЕТ</span>
+        </div>
+        
+       
+    </div>
+  <div class="lk-header-right">
+        <span id="current-time" class="lk-current-time"></span>
+        <div class="lk-user-info">
+            <span id="user-name"></span>
+            <div class="lk-user-avatar">
+                <img src="" alt="Аватар">
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <aside class="lk-sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="profile.html">
+                    <img src="https://i.postimg.cc/9Fnyg5BK/icons8-48.png" alt="Профиль">
+                    <span>Профиль</span>
+                </a>
+            </li>
+                       <li>
+                <a href="routelist.html?userId=ID_ПОЛЬЗОВАТЕЛЯ">
+                    <img src="https://i.postimg.cc/024Pzc87/route-5522240.png" alt="Маршрутный лист">
+                    <span>Маршрутный лист</span>
+                </a>
+            </li>
+          
+        </ul>
+        <div class="logout-icon">
+            <a href="avtoriz.html">
+                <img src="https://i.postimg.cc/1znwsfzZ/i-12.webp" alt="Выход">
+                <span>Выход</span>
+            </a>
+        </div>
+    </aside>
+    <main>
+        <div class="container">
+            <div class="left-section">
+                <div class="upload-container">
+                    <img src="" alt="Фото профиля" class="profile-image" id="profile-image">
+                    <div class="user-role" id="user-role"></div>
+                   
+                    <input type="file" id="photo-input" accept="image/*" style="display: none;">
+                </div>
+                <p class="position" id="user-position"></p>
+            </div>
+            <div class="right-section">
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <h2 class="contact-title">Контактная информация</h2>
+                        <span class="contact-edit">изменить</span>
+                    </div>
+                    <p class="name-info">Фамилия: <span id="surname"></span></p>
+                    <p class="name-info">Имя: <span id="name"></span></p>
+                    <p class="name-info">Отчество: <span id="patronymic"></span></p>
+                    <div class="contact-details">
+                        <p>
+                            <span class="icon-phone"><img
+                                    src="https://i.postimg.cc/7h7qnYc7/free-icon-phone-call-7512314.png"
+                                    alt="Телефон"></span><span id="phone"></span></p>
+                        <p>
+                            <span class="icon-email"><img
+                                    src="https://i.postimg.cc/x17sDNYb/free-icon-email-482138.png"
+                                    alt="Email"></span><span id="email"></span></p>
+                    </div>
+                </div>
+
+                <!-- Форма редактирования профиля (скрыта по умолчанию) -->
+                <div class="edit-profile-form" id="edit-profile-form" style="display: none;">
+                    <h2>Редактировать профиль</h2>
+                    <div class="form-group">
+                        <label for="edit-surname">Фамилия:</label>
+                        <input type="text" id="edit-surname" name="edit-surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-name">Имя:</label>
+                        <input type="text" id="edit-name" name="edit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-patronymic">Отчество:</label>
+                        <input type="text" id="edit-patronymic" name="edit-patronymic">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-phone">Телефон:</label>
+                        <input type="tel" id="edit-phone" name="edit-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email">Email:</label>
+                        <input type="email" id="edit-email" name="edit-email">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-dolzhnost">Должность:</label>
+                        <input type="text" id="edit-dolzhnost" name="edit-dolzhnost">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-photo">Фото:</label>
+                        <input type="file" id="edit-photo" name="photo" accept="image/*"> <!-- Важно: name="photo" -->
+                    </div>
+                    <button id="save-profile-button">Сохранить</button>
+                    <button id="cancel-edit-button">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    
+      document.addEventListener('DOMContentLoaded', function () {
+        // Получаем userId из localStorage
+        const userId = localStorage.getItem('userId');
+        console.log("User ID from localStorage:", userId);
+
+        if (!userId) {
+            window.location.href = 'avtoriz.html'; // Redirect to login if not authenticated
+            return;
+        }
+
+        // Function to get current time
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+        }
+
+        // Update time every minute
+        setInterval(updateTime, 60000); // 60000 milliseconds = 1 minute
+
+        // Initial time update
+        updateTime();
+
+
+        // --------------------------------------------------------------------
+        // Функция для получения данных пользователя
+        async function fetchUserData(userId) {
+            try {
+                console.log("Fetching user data for ID:", userId);
+                const response = await fetch(`http://localhost:3001/user/${userId}`); // Замените на ваш URL
+                if (!response.ok) {
+                    console.error("Ошибка HTTP:", response.status, response.statusText);
+                    throw new Error(`Ошибка получения данных пользователя: ${response.status} - ${response.statusText}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Ошибка при получении данных пользователя:', error);
+                return null;
+            }
+        }
+        // --------------------------------------------------------------------
+        // Функция для отображения данных пользователя
+        async function displayUserData() {
+            console.log("Fetching user data for ID:", userId);
+            const userData = await fetchUserData(userId);
+            console.log("User data received:", userData);
+
+            const profileImage = document.getElementById('profile-image');
+            const userAvatar = document.querySelector('.lk-user-avatar img');
+            const defaultPhoto = 'https://via.placeholder.com/200'; // Замените на ваш URL фото по умолчанию
+
+            if (userData) {
+                console.log("Данные пользователя:", userData);
+                document.getElementById('user-name').textContent = `${userData.surname} ${userData.name[0]}.`;
+                document.getElementById('user-position').textContent = userData.dolzhnost;
+                document.getElementById('surname').textContent = userData.surname;
+                document.getElementById('name').textContent = userData.name;
+                document.getElementById('patronymic').textContent = userData.patronymic;
+                document.getElementById('phone').textContent = userData.phone;
+                document.getElementById('email').textContent = userData.email;
+
+                // Отображаем фото профиля
+                if (userData.photo_path) {
+                    profileImage.src = `http://localhost:3001${userData.photo_path}`;
+                    userAvatar.src = `http://localhost:3001${userData.photo_path}`;
+                    profileImage.alt = 'Фото профиля';
+                    console.log(`Загружено фото пользователя из: http://localhost:3001${userData.photo_path}`);
+                } else {
+                    profileImage.src = defaultPhoto;
+                    userAvatar.src = defaultPhoto;
+                    profileImage.alt = 'Фото профиля отсутствует';
+                    console.log('Фото профиля отсутствует, используется фото по умолчанию.');
+                }
+                 //  Отображение должности (динамически, используя данные из userData)
+                document.getElementById('user-role').textContent = userData.dolzhnost;
+            } else {
+                console.warn('Данные пользователя не получены.');
+            }
+        }
+
+        displayUserData();
+
+        // --------------------------------------------------------------------
+        // Обработчики для кнопок "Изменить фото" и "Загрузить"
+       
+        const photoInput = document.getElementById('photo-input');
+
+        // let selectedFile = null; // Переменная для хранения выбранного файла
+
+        // changePhotoButton.addEventListener('click', function () {
+        //     photoInput.click(); // Открываем диалог выбора файла при клике на кнопку
+        // });
+
+        // photoInput.addEventListener('change', function () {
+        //     selectedFile = this.files[0]; // Сохраняем выбранный файл
+        //     if (selectedFile) {
+        //         const reader = new FileReader();
+        //         reader.onload = function (e) {
+        //             document.getElementById('profile-image').src = e.target.result; // Обновляем предварительный просмотр
+        //             userAvatar.src = e.target.result; //  тоже обновляем превью в шапке
+        //         }
+        //         reader.readAsDataURL(selectedFile);
+        //     }
+        // });
+
+        // uploadPhotoButton.addEventListener('click', function () {
+        //     if (selectedFile) {
+        //         // Отправка файла на сервер
+        //         const formData = new FormData();
+        //         formData.append('photo', selectedFile); // Имя поля должно совпадать с upload.single('photo') в backend
+
+        //         fetch(`http://localhost:3001/upload-photo/${userId}`, { // Используем ID пользователя
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //             .then(response => {
+        //                 console.log("Ответ от сервера:", response);
+        //                 if (response.ok) {
+        //                     return response.json(); // Получаем JSON из ответа
+        //                 } else {
+        //                     console.error('Ошибка при загрузке фото:', response.status, response.statusText);
+        //                     throw new Error(`Ошибка загрузки: ${response.status} - ${response.statusText}`); // Передаем ошибку дальше
+        //                 }
+        //             })
+        //             .then(data => {
+        //                 console.log('Фото успешно загружено на сервер. Ответ:', data);
+        //                 if (data.photoPath) {
+        //                     userAvatar.src = `http://localhost:3001${data.photoPath}`; // Обновляем фото профиля в шапке
+        //                     document.getElementById('profile-image').src = `http://localhost:3001${data.photoPath}`; // Обновляем src с полученным путем
+        //                     document.getElementById('profile-image').alt = 'Фото профиля';
+        //                     console.log("Путь к фото профиля:", data.photoPath);
+        //                     displayUserData(); // Обновляем отображение данных пользователя
+        //                 } else {
+        //                     console.warn('Путь к фото не получен от сервера.');
+        //                 }
+        //             })
+        //             .catch(error => {
+        //                 console.error('Ошибка при отправке запроса:', error);
+        //             });
+        //     } else {
+        //         alert('Пожалуйста, выберите фотографию для загрузки.');
+        //     }
+        // });
+
+        // Код для работы с меню (открытия/закрытия)
+             // Код для работы с меню (открытия/закрытия)
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContainer = document.querySelector('.main-container');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mainContainer.classList.toggle('sidebar-collapsed');
+        });
+
+        // Кнопка "Изменить"
+        const editButton = document.querySelector('.contact-edit');
+        // Форма редактирования
+        const editProfileForm = document.getElementById('edit-profile-form');
+        // Элементы контактной информации
+        const surnameSpan = document.getElementById('surname');
+        const nameSpan = document.getElementById('name');
+        const patronymicSpan = document.getElementById('patronymic');
+        const phoneSpan = document.getElementById('phone');
+        const emailSpan = document.getElementById('email');
+        const positionSpan = document.getElementById('user-position');
+        // Поля формы редактирования
+        const editSurnameInput = document.getElementById('edit-surname');
+        const editNameInput = document.getElementById('edit-name');
+        const editPatronymicInput = document.getElementById('edit-patronymic');
+        const editPhoneInput = document.getElementById('edit-phone');
+        const editEmailInput = document.getElementById('edit-email');
+        const editDolzhnostInput = document.getElementById('edit-dolzhnost');
+         const editPhotoInput = document.getElementById('edit-photo');
+        // Кнопки внутри формы
+        const saveProfileButton = document.getElementById('save-profile-button');
+        const cancelEditButton = document.getElementById('cancel-edit-button');
+        // Кнопки для фото
+        // const changePhotoButton = document.getElementById('change-photo-button');
+        // const uploadPhotoButton = document.getElementById('upload-photo-button');
+
+
+        // Функция для отображения формы редактирования
+        function showEditForm() {
+            editSurnameInput.value = surnameSpan.textContent;
+            editNameInput.value = nameSpan.textContent;
+            editPatronymicInput.value = patronymicSpan.textContent;
+            editPhoneInput.value = phoneSpan.textContent;
+            editEmailInput.value = emailSpan.textContent;
+            editDolzhnostInput.value = positionSpan.textContent;
+            editProfileForm.style.display = 'block';
+          
+            // Скрытие контактной информации при открытии формы редактирования
+            document.querySelector('.contact-card').style.display = 'none';
+        }
+
+        // Функция для скрытия формы редактирования
+        function hideEditForm() {
+            editProfileForm.style.display = 'none';
+        
+            // Отображение контактной информации при закрытии формы редактирования
+            document.querySelector('.contact-card').style.display = 'block';
+        }
+
+        // Обработчик клика по кнопке "Изменить"
+        editButton.addEventListener('click', showEditForm);
+
+        // Обработчик клика по кнопке "Отмена"
+        cancelEditButton.addEventListener('click', hideEditForm);
+
+        // Обработчик клика по кнопке "Сохранить"
+        saveProfileButton.addEventListener('click', async () => {
+            const userId = localStorage.getItem('userId');
+            const newSurname = editSurnameInput.value;
+            const newName = editNameInput.value;
+            const newPatronymic = editPatronymicInput.value;
+            const newPhone = editPhoneInput.value;
+            const newEmail = editEmailInput.value;
+            const newDolzhnost = editDolzhnostInput.value;
+            const newPhoto = editPhotoInput.files[0]; // Get the selected file
+
+            const formData = new FormData();
+            if (newSurname) formData.append('surname', newSurname);
+            if (newName) formData.append('name', newName);
+            if (newPatronymic) formData.append('patronymic', newPatronymic);
+            if (newPhone) formData.append('phone', newPhone);
+            if (newEmail) formData.append('email', newEmail);
+            if (newDolzhnost) formData.append('dolzhnost', newDolzhnost);
+            if (newPhoto) formData.append('photo', newPhoto);
+
+            console.log("Данные, которые отправляются:", {
+                surname: newSurname,
+                name: newName,
+                patronymic: newPatronymic,
+                phone: newPhone,
+                email: newEmail,
+                dolzhnost: newDolzhnost,
+                photo: newPhoto ? newPhoto.name : 'no photo', // for debugging
+            });
+
+            try {
+                const response = await fetch(`http://localhost:3001/user/${userId}`, {
+                    method: 'PUT',
+                    // headers: {
+                    // }, // Content-Type будет установлен автоматически, так как используем FormData
+                    body: formData, // Используем FormData
+                });
+
+                console.log("Ответ от сервера (response):", response);
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    console.error('Ошибка при обновлении данных.  Status:', response.status, 'Text:', response.statusText, 'Error Body:', errorBody);
+                    throw new Error(`Ошибка при обновлении данных: ${response.status} - ${response.statusText}. ${errorBody}`);
+                }
+
+                const updatedUserData = await response.json();
+                console.log("Обновленные данные (updatedUserData):", updatedUserData);
+
+                // Обновление отображаемых данных на странице
+                surnameSpan.textContent = updatedUserData.user.surname;
+                nameSpan.textContent = updatedUserData.user.name;
+                patronymicSpan.textContent = updatedUserData.user.patronymic;
+                phoneSpan.textContent = updatedUserData.user.phone;
+                emailSpan.textContent = updatedUserData.user.email;
+                positionSpan.textContent = updatedUserData.user.dolzhnost;
+                // Обновление фото
+                const profileImage = document.getElementById('profile-image');
+                const userAvatar = document.querySelector('.lk-user-avatar img');
+
+                 if (updatedUserData.user.photo_path) {
+                    profileImage.src = `http://localhost:3001${updatedUserData.user.photo_path}`;
+                    userAvatar.src = `http://localhost:3001${updatedUserData.user.photo_path}`;
+                } else {
+                     profileImage.src = defaultPhoto;
+                     userAvatar.src = defaultPhoto;
+                }
+
+                hideEditForm(); // Скрыть форму
+                displayUserData(); // Обновить все данные профиля
+            } catch (error) {
+                console.error('Ошибка при сохранении данных:', error);
+                alert('Ошибка при сохранении данных. Пожалуйста, попробуйте еще раз.');
+            }
+        });
+    });
+</script>
+</body>
+</html>

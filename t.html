@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратный звонок</title>
+</head>
+
+<body>
+    <h1>Заказать обратный звонок</h1>
+
+    <form id="callback-form-itself" onsubmit="submitCallbackForm(event)">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="phone">Номер телефона:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="comment">Комментарий:</label>
+        <textarea id="comment" name="comment" rows="4"></textarea><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        function submitCallbackForm(event) {
+            event.preventDefault(); // Отменяем стандартную отправку
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const comment = document.getElementById('comment').value;
+
+            fetch('http://localhost:3006/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    comment: comment
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.message) {
+                        // Перенаправляем только после успешного ответа
+                        window.location.href = 'zakaz.html';
+                    } else {
+                        // Обрабатываем ошибку (если она есть)
+                        document.getElementById('message').textContent = data.error || 'Произошла ошибка';
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    document.getElementById('message').textContent = 'Произошла ошибка при отправке.';
+                });
+        }
+    </script>
+</body>
+
+</html>

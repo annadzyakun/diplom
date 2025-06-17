@@ -1,0 +1,945 @@
+body {
+    margin: 0;
+    font-family: sans-serif; /* Добавил общий шрифт */
+    color: #333;
+    background-color: #f9f9f9;
+    position: relative; /* добавил это */
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+     width: 90%; /*  Сделал ширину 90% */
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top Header */
+.top-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.top-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo and Brand Name */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px; /* Adjust as needed to fit the image */
+    height: 60px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.logo div p:first-of-type{
+    font-size: 1.8em;
+    font-family: 'Spectral SC', serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+.logo div p:last-of-type{
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+.contact-info {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: flex-end; /* align items to the right */
+    width: 100%;
+}
+
+.contact-info > div {
+    margin-left: 30px;
+    text-align: right;
+}
+.contact-info .working-hours p{
+  margin: 0;
+  line-height: 1.2;
+}
+.contact-info .working-hours b{
+    font-family: 'Spectral SC', serif;
+}
+.contact-info a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0; /* Remove padding, we'll use margin */
+    display: block;  /* Make the link a block element */
+    margin-bottom: -4px; /* Negative margin to move it up slightly */
+}
+.contact-info .phone-number p {
+  font-size: 13px;
+  margin: 0;
+   color: #666;
+   line-height: 1.2;
+}
+
+.user-icon {
+    margin-left: 30px; /* Space from the phone number */
+}
+.user-icon-link {
+    display: block; /* Make the link a block element */
+    text-decoration: none; /* Remove underline */
+}
+.user-icon img{
+    width: 30px;
+    height: 30px;
+    text-decoration: none; /* Remove underline from the image */
+}
+/* Main Navigation */
+/* Main Navigation Styles */
+.main-nav {
+   background-color: #e8f5ff;
+   padding: 10px 0;
+}
+
+.main-nav .container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-right: 30px;
+    position: relative; /* Required for dropdown positioning */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000; /* Изменен цвет на черный (#000) */
+    font-weight: bold;
+    position: relative; /* Для позиционирования стрелки */
+    display: inline-block;
+    font-family: 'Spectral SC', serif;  /* Добавлен шрифт Spectral SC */
+}
+.main-nav a:hover{
+  color: #007bff;
+}
+.arrow {
+  display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+/* Dropdown Styles */
+.main-nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 200px; /* Adjust width as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: none; /* Initially hidden */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    z-index: 1; /* Ensure dropdown appears above other content */
+}
+
+.main-nav li:hover > .dropdown {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav .dropdown li {
+    padding: 0;
+}
+.main-nav .dropdown li a {  /*  Выбираем ссылки в выпадающем меню */
+    padding-left: 15px; /*  Добавляем отступ слева  */
+    display: block; /*  Важно, чтобы padding работал  */
+}
+.main-nav .dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #555;
+    text-transform: none;
+    font-weight: normal;
+    font-family: 'Spectral SC', serif; /* Use same font */
+}
+
+.main-nav .dropdown a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+     width: 90%; /*  Сделал ширину 90% */
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top Header */
+.top-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.top-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo and Brand Name */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px; /* Adjust as needed to fit the image */
+    height: 60px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.logo div p:first-of-type{
+    font-size: 1.8em;
+    font-family: 'Spectral SC', serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+.logo div p:last-of-type{
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+.contact-info {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: flex-end; /* align items to the right */
+    width: 100%;
+}
+
+.contact-info > div {
+    margin-left: 30px;
+    text-align: right;
+}
+.contact-info .working-hours p{
+  margin: 0;
+  line-height: 1.2;
+}
+.contact-info .working-hours b{
+    font-family: 'Spectral SC', serif;
+}
+.contact-info a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0; /* Remove padding, we'll use margin */
+    display: block;  /* Make the link a block element */
+    margin-bottom: 3px; /* Negative margin to move it up slightly */
+}
+.contact-info .phone-number p {
+  font-size: 13px;
+  margin: 0;
+   color: #666;
+   line-height: 1.2;
+}
+
+/* Contact Info and User Icon */
+
+
+
+
+
+
+
+
+
+
+.user-icon {
+    margin-left: 30px; /* Space from the phone number */
+}
+.user-icon-link {
+    display: block; /* Make the link a block element */
+    text-decoration: none; /* Remove underline */
+}
+.user-icon img{
+    width: 30px;
+    height: 30px;
+    text-decoration: none; /* Remove underline from the image */
+}
+/* Main Navigation */
+/* Main Navigation Styles */
+/* Main Navigation */
+/* Main Navigation Styles */
+.main-nav {
+    background-color: #e8f5ff;
+    /* Добавляем отступ слева */
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* padding-left: 40px;  // Удалите эту строку или замените значение */
+    padding-left: 120px; /* Добавляем отступ слева для пунктов меню (40px + 230px) */
+}
+.main-nav li {
+    margin-right: 30px;
+    position: relative; /* Required for dropdown positioning */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000; /* Изменен цвет на черный (#000) */
+    font-weight: bold;
+    position: relative; /* Для позиционирования стрелки */
+    display: inline-block;
+    font-family: 'Spectral SC', serif; /* Добавлен шрифт Spectral SC */
+}
+
+.main-nav a:hover {
+    color: #007bff;
+}
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+/* Dropdown Styles */
+.main-nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 300px; /* Adjust width as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: none; /* Initially hidden */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    z-index: 1; /* Ensure dropdown appears above other content */
+}
+
+.main-nav li:hover > .dropdown {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav .dropdown li {
+    padding: 0;
+}
+
+.main-nav .dropdown a {
+    display: block;
+    padding: 10px 5px;
+    color: #555;
+    text-transform: none;
+    font-weight: normal;
+    font-family: 'Spectral SC', serif; /* Use same font */
+}
+
+.main-nav .dropdown a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+
+/* Основные стили для контейнера выпадающего списка */
+.dropdown-container {
+    position: relative;
+}
+
+/* Стили для выпадающего списка с несколькими колонками */
+.dropdown.multi-column {
+    width: 860px; /* Ширина всего выпадающего списка */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    border: 1px solid #ddd;
+    display: flex;           /* Use Flexbox */
+    flex-direction: row;   /* Расположение элементов в строку */
+    justify-content: flex-start; /* Выравниваем элементы в начале строки */
+}
+
+/* Отображение выпадающего списка при наведении */
+.dropdown-container:hover .dropdown.multi-column {
+    display: flex;
+}
+
+/* Стили для каждой колонки */
+.dropdown.multi-column .column {
+    flex: 1;             /* Each column takes equal share */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* Стили для заголовков колонок */
+.dropdown.multi-column .column .dropdown-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;           /* Dark-gray color */
+    display: block;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для списков внутри колонок */
+.dropdown.multi-column .column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили для элементов списка */
+.dropdown.multi-column .column ul li {
+    padding: 4px 0;
+}
+
+/* Стили для ссылок */
+.dropdown.multi-column .column ul li a {
+    color: #666;           /* Gray text color */
+    text-decoration: none;
+    font-size: 14px;
+    display: block;      /* Make each link to be block level */
+    padding: 4px 0;
+}
+
+/* Псевдоэлемент для отображения точек */
+.dropdown.multi-column .column ul li a::before {
+    content: '•';      /* Bullet character */
+    color: #666;           /* Gray color for the bullets */
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Выравнивание точек */
+.dropdown.multi-column .column ul li {
+    text-indent: -1em;
+    padding-left: 1em;
+}
+
+.arrow {
+  display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+
+} /* --- Поиск в навигации --- */
+   .main-nav ul li {
+    position: relative;
+}
+
+.main-nav .search-icon {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    top: -5px;
+    /* Чуть поднимаем иконку поиска */
+}
+
+.main-nav .search-icon:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+
+.main-nav .search-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -2px;
+}
+
+.main-nav .search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    z-index: 100;
+    transform: translateX(-50%);
+    /* Центрируем относительно иконки */
+    margin-top: 5px;
+}
+
+.main-nav .search-box.active {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.main-nav .search-input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    width: 200px;
+}
+
+.main-nav .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.main-nav .search-button:hover {
+    background-color: #0056b3;
+}
+  /* --- Поиск в навигации --- */
+   .main-nav ul li {
+    position: relative;
+}
+
+.main-nav .search-icon {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    top: -5px;
+    /* Чуть поднимаем иконку поиска */
+}
+
+.main-nav .search-icon:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+
+.main-nav .search-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -2px;
+}
+
+.main-nav .search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff; /* Белый фон */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Закругленные углы */
+    display: none;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 15px; /* Отступы внутри блока */
+    transform: translateX(0); /* Убираем центрирование */
+    margin-top: 5px;
+    width: 940px; /*  Начальная ширина  */
+    min-width: auto; /* Удаляем min-width  */
+}
+
+.main-nav .search-box.active {
+    display: block; /* Показываем при активации */
+}
+
+/* Стили для поля ввода */
+.main-nav .search-input {
+    width: 100%; /*  Занимает всю ширину блока  */
+    padding: 10px;
+    border: none; /* Убираем рамку */
+    border-bottom: 1px solid #ddd; /*  Только нижняя граница */
+    border-radius: 0; /* Убираем закругления */
+    font-size: 16px;
+    margin-bottom: 10px; /*  Отступ снизу для текста  */
+    box-sizing: border-box; /* Важно для правильного отображения ширины */
+}
+
+.main-nav .search-input:focus {
+    outline: none; /* Убираем обводку при фокусе */
+    border-bottom: 2px solid #007bff; /* Подчеркивание при фокусе */
+}
+
+/* Стили для крестика (закрытие) */
+.search-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+}
+
+.search-close:hover {
+    color: #333;
+}
+
+/* Стили для текста "Нажмите ввод..." */
+.search-instructions {
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+}
+
+/* Стили для результатов поиска */
+.search-results {
+    margin-top: 10px;
+}
+
+.search-result-item {
+    margin-bottom: 8px;
+}
+
+.search-result-item a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+}
+
+.search-result-item a:hover {
+    background-color: #f0f0f0;
+}
+.main-nav .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.main-nav .search-button:hover {
+    background-color: #0056b3;
+}
+body {
+    background-color: #fff;
+}
+
+
+.promo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.promo-slider {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+.promo-content {
+    max-width: 800px;
+    margin-bottom: 20px;
+    margin-left:350px;  /* Вернула обратно */
+    padding: 0 20px;
+}
+.promo-content .promo-heading {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Spectral SC', serif;
+    color: #333;
+    font-weight: bold;
+    text-align: center; /* Центрируем заголовок */
+}
+
+.promo-text {
+    margin-bottom: 15px;
+    text-align: justify;  /* Выравниваем текст по ширине */
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
+.promo-text p {
+    margin: 5px 0;
+}
+
+/* Company Info Section */
+.company-info-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.company-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.company-info-row.reverse {
+    flex-direction: row-reverse; /* Меняем порядок элементов на обратный */
+}
+
+.company-info-image {
+    width: 45%;  /* Adjust as needed */
+}
+
+.company-info-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block; /* Убираем нижний отступ, который может появляться у изображений */
+}
+
+.company-info-text {
+    width: 45%; /* Adjust as needed */
+}
+
+.company-info-text h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left; /* align heading to the left */
+}
+
+.company-info-text p {
+    font-size: 16px;
+    color: #666;
+    text-align: left; /* align paragraph to the left */
+}
+
+/* Appointment Section Styles */
+.appointment-section {
+    background-color: #007bff; /* Ярко-синий цвет фона */
+    color: white; /* Белый цвет текста */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 40px 20px; /* Верхний и нижний отступы 40px, левый и правый 20px */
+}
+
+.appointment-title {
+    font-size: 2.5em; /* Размер заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+.appointment-text {
+    font-size: 1.2em; /* Размер текста */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.appointment-phone {
+    display: block; /* Чтобы ссылка занимала всю ширину */
+    font-size: 2em; /* Размер номера телефона */
+    color: white; /* Белый цвет номера телефона */
+    text-decoration: none; /* Убираем подчеркивание */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+.appointment-hours {
+    font-size: 0.9em; /* Размер времени работы */
+    margin-bottom: 25px; /* Отступ снизу */
+}
+
+.appointment-button {
+    background-color: white; /* Белый цвет фона */
+    color: #007bff; /* Ярко-синий цвет текста */
+    font-size: 1.2em; /* Размер текста */
+    padding: 12px 24px; /* Внутренние отступы */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.appointment-button:hover {
+    background-color: #f0f0f0; /* Более светлый фон при наведении */
+}
+
+/* Контейнер для центрирования контента (по желанию) */
+.statistics-section {
+    background-color: #fff;
+    padding: 30px 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+.statistics-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Vertical alignment of items */
+    text-align: center;
+    position: relative;
+}
+
+.statistic-item {
+    flex: 1;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statistic-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+    position: relative; /* Needed to bring text above the line */
+    z-index: 2; /* Ensure number is above line */
+}
+
+.statistic-text {
+    font-size: 0.6em;
+    color: #007bff;
+    vertical-align: top;
+    position: relative;
+    z-index: 2; /* Ensure text is above line */
+}
+
+.statistic-description {
+    font-size: 0.8em;
+    color: #555;
+    line-height: 1.2;
+    position: relative; /* Needed to bring text above the line */
+    z-index: 2; /* Ensure text is above line */
+}
+
+/* Circle and Line */
+.statistics-row::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Center the line vertically */
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #007bff;
+    z-index: 1; /* Position line behind content */
+    transform: translateY(-50%); /* Fine-tune vertical positioning */
+}
+
+.statistic-item::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Position the circle on the line */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #007bff;
+    z-index: 2; /* Ensure circle is above the line */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .statistics-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .statistic-item {
+        margin-bottom: 15px;
+    }
+
+    .statistics-row::before,
+    .statistic-item::before {
+        display: none;
+    }
+}
+

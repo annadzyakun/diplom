@@ -1,0 +1,1563 @@
+body {
+    margin: 0;
+    font-family: sans-serif; /* Добавил общий шрифт */
+    color: #333;
+    background-color: #f9f9f9;
+    position: relative; /* добавил это */
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+     width: 90%; /*  Сделал ширину 90% */
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top Header */
+.top-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.top-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo and Brand Name */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px; /* Adjust as needed to fit the image */
+    height: 60px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.logo div p:first-of-type{
+    font-size: 1.8em;
+    font-family: 'Spectral SC', serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+.logo div p:last-of-type{
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+.contact-info {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: flex-end; /* align items to the right */
+    width: 100%;
+}
+
+.contact-info > div {
+    margin-left: 30px;
+    text-align: right;
+}
+.contact-info .working-hours p{
+  margin: 0;
+  line-height: 1.2;
+}
+.contact-info .working-hours b{
+    font-family: 'Spectral SC', serif;
+}
+.contact-info a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0; /* Remove padding, we'll use margin */
+    display: block;  /* Make the link a block element */
+    margin-bottom: -4px; /* Negative margin to move it up slightly */
+}
+.contact-info .phone-number p {
+  font-size: 13px;
+  margin: 0;
+   color: #666;
+   line-height: 1.2;
+}
+
+.user-icon {
+    margin-left: 30px; /* Space from the phone number */
+}
+.user-icon-link {
+    display: block; /* Make the link a block element */
+    text-decoration: none; /* Remove underline */
+}
+.user-icon img{
+    width: 30px;
+    height: 30px;
+    text-decoration: none; /* Remove underline from the image */
+}
+/* Main Navigation */
+/* Main Navigation Styles */
+.main-nav {
+   background-color: #e8f5ff;
+   padding: 10px 0;
+}
+
+.main-nav .container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-right: 30px;
+    position: relative; /* Required for dropdown positioning */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000; /* Изменен цвет на черный (#000) */
+    font-weight: bold;
+    position: relative; /* Для позиционирования стрелки */
+    display: inline-block;
+    font-family: 'Spectral SC', serif;  /* Добавлен шрифт Spectral SC */
+}
+.main-nav a:hover{
+  color: #007bff;
+}
+.arrow {
+  display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+/* Dropdown Styles */
+.main-nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 200px; /* Adjust width as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: none; /* Initially hidden */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    z-index: 1; /* Ensure dropdown appears above other content */
+}
+
+.main-nav li:hover > .dropdown {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav .dropdown li {
+    padding: 0;
+}
+.main-nav .dropdown li a {  /*  Выбираем ссылки в выпадающем меню */
+    padding-left: 15px; /*  Добавляем отступ слева  */
+    display: block; /*  Важно, чтобы padding работал  */
+}
+.main-nav .dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #555;
+    text-transform: none;
+    font-weight: normal;
+    font-family: 'Spectral SC', serif; /* Use same font */
+}
+
+.main-nav .dropdown a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+     width: 90%; /*  Сделал ширину 90% */
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top Header */
+.top-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.top-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo and Brand Name */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px; /* Adjust as needed to fit the image */
+    height: 60px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.logo div p:first-of-type{
+    font-size: 1.8em;
+    font-family: 'Spectral SC', serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+.logo div p:last-of-type{
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+/* Contact Info and User Icon */
+.contact-info {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: flex-end; /* align items to the right */
+    width: 100%;
+}
+
+.contact-info > div {
+    margin-left: 30px;
+    text-align: right;
+}
+.contact-info .working-hours p{
+  margin: 0;
+  line-height: 1.2;
+}
+.contact-info .working-hours b{
+    font-family: 'Spectral SC', serif;
+}
+.contact-info a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0; /* Remove padding, we'll use margin */
+    display: block;  /* Make the link a block element */
+    margin-bottom: 3px; /* Negative margin to move it up slightly */
+}
+.contact-info .phone-number p {
+  font-size: 13px;
+  margin: 0;
+   color: #666;
+   line-height: 1.2;
+}
+
+/* Contact Info and User Icon */
+
+
+
+
+
+
+
+
+
+
+.user-icon {
+    margin-left: 30px; /* Space from the phone number */
+}
+.user-icon-link {
+    display: block; /* Make the link a block element */
+    text-decoration: none; /* Remove underline */
+}
+.user-icon img{
+    width: 30px;
+    height: 30px;
+    text-decoration: none; /* Remove underline from the image */
+}
+/* Main Navigation */
+/* Main Navigation Styles */
+/* Main Navigation */
+/* Main Navigation Styles */
+.main-nav {
+    background-color: #e8f5ff;
+    /* Добавляем отступ слева */
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* padding-left: 40px;  // Удалите эту строку или замените значение */
+    padding-left: 120px; /* Добавляем отступ слева для пунктов меню (40px + 230px) */
+}
+.main-nav li {
+    margin-right: 30px;
+    position: relative; /* Required for dropdown positioning */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000; /* Изменен цвет на черный (#000) */
+    font-weight: bold;
+    position: relative; /* Для позиционирования стрелки */
+    display: inline-block;
+    font-family: 'Spectral SC', serif; /* Добавлен шрифт Spectral SC */
+}
+
+.main-nav a:hover {
+    color: #007bff;
+}
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+/* Dropdown Styles */
+.main-nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 300px; /* Adjust width as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: none; /* Initially hidden */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    z-index: 1; /* Ensure dropdown appears above other content */
+}
+
+.main-nav li:hover > .dropdown {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav .dropdown li {
+    padding: 0;
+}
+
+.main-nav .dropdown a {
+    display: block;
+    padding: 10px 5px;
+    color: #555;
+    text-transform: none;
+    font-weight: normal;
+    font-family: 'Spectral SC', serif; /* Use same font */
+}
+
+.main-nav .dropdown a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+
+/* Основные стили для контейнера выпадающего списка */
+.dropdown-container {
+    position: relative;
+}
+
+/* Стили для выпадающего списка с несколькими колонками */
+.dropdown.multi-column {
+    width: 860px; /* Ширина всего выпадающего списка */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    border: 1px solid #ddd;
+    display: flex;           /* Use Flexbox */
+    flex-direction: row;   /* Расположение элементов в строку */
+    justify-content: flex-start; /* Выравниваем элементы в начале строки */
+}
+
+/* Отображение выпадающего списка при наведении */
+.dropdown-container:hover .dropdown.multi-column {
+    display: flex;
+}
+
+/* Стили для каждой колонки */
+.dropdown.multi-column .column {
+    flex: 1;             /* Each column takes equal share */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* Стили для заголовков колонок */
+.dropdown.multi-column .column .dropdown-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;           /* Dark-gray color */
+    display: block;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для списков внутри колонок */
+.dropdown.multi-column .column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили для элементов списка */
+.dropdown.multi-column .column ul li {
+    padding: 4px 0;
+}
+
+/* Стили для ссылок */
+.dropdown.multi-column .column ul li a {
+    color: #666;           /* Gray text color */
+    text-decoration: none;
+    font-size: 14px;
+    display: block;      /* Make each link to be block level */
+    padding: 4px 0;
+}
+
+/* Псевдоэлемент для отображения точек */
+.dropdown.multi-column .column ul li a::before {
+    content: '•';      /* Bullet character */
+    color: #666;           /* Gray color for the bullets */
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Выравнивание точек */
+.dropdown.multi-column .column ul li {
+    text-indent: -1em;
+    padding-left: 1em;
+}
+
+.arrow {
+  display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+
+} /* --- Поиск в навигации --- */
+   .main-nav ul li {
+    position: relative;
+}
+
+.main-nav .search-icon {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    top: -5px;
+    /* Чуть поднимаем иконку поиска */
+}
+
+.main-nav .search-icon:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+
+.main-nav .search-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -2px;
+}
+
+.main-nav .search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    z-index: 100;
+    transform: translateX(-50%);
+    /* Центрируем относительно иконки */
+    margin-top: 5px;
+}
+
+.main-nav .search-box.active {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.main-nav .search-input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    width: 200px;
+}
+
+.main-nav .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.main-nav .search-button:hover {
+    background-color: #0056b3;
+}
+  /* --- Поиск в навигации --- */
+   .main-nav ul li {
+    position: relative;
+}
+
+.main-nav .search-icon {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    top: -5px;
+    /* Чуть поднимаем иконку поиска */
+}
+
+.main-nav .search-icon:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+
+.main-nav .search-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -2px;
+}
+
+
+.main-nav .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.main-nav .search-button:hover {
+    background-color: #0056b3;
+}
+/* Company Info Section */
+.company-info-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.company-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.company-info-row.reverse {
+    flex-direction: row-reverse; /* Меняем порядок элементов на обратный */
+}
+
+.company-info-image {
+    width: 45%;  /* Adjust as needed */
+}
+
+.company-info-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block; /* Убираем нижний отступ, который может появляться у изображений */
+}
+
+.company-info-text {
+    width: 45%; /* Adjust as needed */
+}
+
+.company-info-text h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left; /* align heading to the left */
+}
+
+.company-info-text p {
+    font-size: 16px;
+    color: #666;
+    text-align: left; /* align paragraph to the left */
+}.main-nav .search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff; /* Белый фон */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Закругленные углы */
+    display: none;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 15px; /* Отступы внутри блока */
+    transform: translateX(0); /* Убираем центрирование */
+    margin-top: 5px;
+    width: 940px; /*  Начальная ширина  */
+    min-width: auto; /* Удаляем min-width  */
+}
+
+.main-nav .search-box.active {
+    display: block; /* Показываем при активации */
+}
+
+/* Стили для поля ввода */
+.main-nav .search-input {
+    width: 100%; /*  Занимает всю ширину блока  */
+    padding: 10px;
+    border: none; /* Убираем рамку */
+    border-bottom: 1px solid #ddd; /*  Только нижняя граница */
+    border-radius: 0; /* Убираем закругления */
+    font-size: 16px;
+    margin-bottom: 10px; /*  Отступ снизу для текста  */
+    box-sizing: border-box; /* Важно для правильного отображения ширины */
+}
+
+.main-nav .search-input:focus {
+    outline: none; /* Убираем обводку при фокусе */
+    border-bottom: 2px solid #007bff; /* Подчеркивание при фокусе */
+}
+
+/* Стили для крестика (закрытие) */
+.search-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+}
+
+.search-close:hover {
+    color: #333;
+}
+
+/* Стили для текста "Нажмите ввод..." */
+.search-instructions {
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+}
+
+/* Стили для результатов поиска */
+.search-results {
+    margin-top: 10px;
+}
+
+.search-result-item {
+    margin-bottom: 8px;
+}
+
+.search-result-item a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+}
+
+.search-result-item a:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+.promo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.promo-slider {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+.promo-content {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    margin-left: auto; /* Выравнивание по правому краю */
+    margin-right: 0;
+    transform: translateX(-45px); /* Смещаем на 5px влево */
+}
+
+.promo-content .promo-heading {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Spectral SC', serif;
+    color: #333;
+    font-weight: bold;
+}
+
+.promo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.promo-text {
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.promo-text p {
+    margin: 5px 0;
+}
+
+.btn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #333;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: bold;
+    transition: color 0.2s;
+    border: none;
+    position: relative;
+    text-align: right;
+    margin-left: auto;
+}
+
+.btn-more:hover {
+    color: #007bff;
+}
+
+.btn-more::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    height: 1px;
+    background-color: #333;
+}
+.your-class div{
+    background:#ccc;
+     padding:0;
+     text-align:center;
+     border-radius: 8px;
+}
+.your-class img {
+  width:100%;
+  height:auto;
+   display: block;
+    border-radius: 8px;
+
+}
+.slick-prev,
+.slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 1;
+
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px;
+    line-height: 1;
+    color: #333;
+   opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+     font-family: "slick";
+}
+
+.slick-prev {
+    left: 10px;
+}
+.slick-next {
+   right: 10px;
+}
+.slick-prev:before {
+  content: '←';
+}
+.slick-next:before {
+   content: '→';
+}
+.services-section {
+    padding: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.services-section .container{
+    text-align: center;
+}
+.services-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* перенос элементов на новую строку */
+    gap: 45px; /*  расстояние между элементами */
+    max-width: 1000px; /* максимальная ширина */
+    margin: 0 auto;
+}
+
+.service-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(25% - 45px); /* ширина элемента (25% ширины экрана минус расстояние между элементами ) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+     box-sizing: border-box;
+
+}
+.service-item:hover{
+  transform: scale(1.02);
+}
+.service-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+      object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.service-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+
+}
+
+.btn-details {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+     transition: background-color 0.2s, color 0.2s;
+}
+.btn-details:hover{
+    background-color: #007bff;
+    color: #fff;
+}
+
+/*Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+  .service-item {
+    width: calc(50% - 30px);
+  }
+   .services-grid {
+    gap: 15px;
+    }
+}
+
+/*Адаптивность для очень маленьких экранов */
+@media (max-width: 576px) {
+    .service-item {
+        width: 100%;
+    }
+}
+.clients-section {
+    padding: 20px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.clients-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Еще больший отступ */
+    margin-bottom: 20px;
+ 
+}
+
+.clients-logos img {
+    max-width: 120px; /* Уменьшен размер логотипов */
+    height: auto;
+    opacity: 0.7;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.btn-client {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-client:hover {
+    background-color: #0056b3;
+}
+/* Для экранов меньше 768px уменьшаем gap */
+@media (max-width: 768px) {
+    .clients-logos {
+        gap: 20px;
+    }
+    .clients-logos img {
+        max-width: 80px;
+    }
+}
+
+
+/* Stats Section */
+.stats-section {
+    padding: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.stats-section h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background-color: #3878c9;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(25% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-item img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #e8f5ff;/* Light Blue */
+  width: 100%;
+  padding: 20px 0; /* Add some padding top and bottom */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around; /* Distribute columns evenly */
+  max-width: 1200px; /*  Maximum width of the footer, adjust as needed */
+  margin: 0 auto; /* Center the footer container */
+  padding: 0 20px; /* Add some padding on the sides */
+}
+
+.footer-column {
+  width: 30%; /* Adjust column width as desired */
+}
+
+.footer-column h3 {
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #000;
+  text-decoration: none;
+}
+
+.request-form {
+  margin-top: 5px;
+}
+
+.request-button {
+  background-color: #007bff; /* Green button */
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.request-button:hover {
+  background-color: #007bff;
+}
+
+
+
+.req-button {
+    background-color: transparent; /* Убираем фон */
+    border: none; /* Убираем рамку */
+    color: #5bc0de; /* Голубой цвет */
+    padding: 0; /* Убираем внутренние отступы */
+    font-size: 1em; /* Или любой другой подходящий размер */
+    cursor: pointer; /* Меняем курсор на руку при наведении */
+    transition: color 0.2s ease; /* Плавный переход цвета при наведении */
+}
+
+.req-button:hover {
+    color: #46b8da;  /* Более темный оттенок голубого при наведении */
+    text-decoration: underline; /* Подчеркивание при наведении (опционально) */
+}
+/*Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .stat-item {
+        width: calc(50% - 20px);
+    }
+   .footer-content {
+        flex-direction: column;
+    }
+    .contact-details {
+        text-align: center;
+         margin-bottom: 20px;
+    }
+    .footer-icon img {
+       margin-right: 0;
+    }
+    .clients-logos {
+    gap: 50px;
+    }
+}
+/* ... остальные стили ... */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-image: url("https://i.postimg.cc/SswCQ4b2/2025-01-26-145020.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 600px; /* Increased min-height for the section */
+}
+
+.form-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px; /* Increased padding for greater vertical space */
+    border-radius: 10px;
+    width: 600px;
+    margin: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.form-wrapper h1 {
+    font-size: 36px; /* Slightly larger heading */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px; /* Increased margin below the heading */
+    font-family: 'Spectral SC', serif;
+}
+
+.form-wrapper p {
+    font-size: 18px; /* Slightly larger paragraph text */
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px; /* Increased margin below the paragraph */
+}
+
+.request-button {
+    display: inline-block;
+    padding: 18px 30px;
+    background-color: #2962ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.request-button:hover {
+    background-color: #1e48b8;
+}
+/* ... остальные стили ... */ 
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group input[type="tel"],
+.input-group input[type="email"],
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.input-group textarea {
+    height: 100px;
+}
+
+button {
+    background-color: #45a049;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;    font-size: 16px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}/* Feedback Button Styles */
+.feedback-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.feedback-button {
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.feedback-button:hover {
+    background-color: #2c3e50;
+}
+.feedback-options-container{
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+     background-color: rgba(255, 255, 255, 0.9);
+     border-radius: 5px;
+     padding: 10px;
+     display: none;
+}
+.feedback-options-container.feedback-options-container.active{
+    display: block;
+}
+.feedback-options {
+     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.option-button {
+  display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    background: #e0e0e0;
+    color: #333;
+    transition: background 0.3s ease;
+     border: none;
+    cursor: pointer;
+    margin: 5px 0;
+     border-radius: 5px;
+     justify-content: space-between;
+}
+
+.option-button:hover {
+    background: #f0f0f0;
+}
+.option-text {
+    margin-left: 10px; /* Общий отступ для всех текстов */
+}
+.option-button-chat .option-text { /* Добавляем этот селектор для специфичного стиля*/
+    margin-left: px;  /* Уменьшаем левый отступ только для Обратного звонка */
+}
+
+/* Footer styles */
+.footer-section {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.contact-details {
+  text-align: left; /* Возвращаем выравнивание влево */
+    line-height: 1.6;
+   flex: 1; /* Делаем flex-элементом */
+    max-width: 500px; /* Ограничение максимальной ширины */
+    margin-left: 20px; /* Добавляем отступ слева */
+}
+.contact-details p{
+    margin: 5px 0;
+    line-height: 1.4;
+}
+.contact-details a{
+     text-decoration: none;
+    color: #333;
+}
+.contact-details a:hover{
+    text-decoration: underline;
+}
+.btn-tender {
+     
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-tender:hover {
+    background-color: #45a049;
+}
+
+.footer-icon {
+   flex: 0 0 auto; /* Не сжимать, не растягивать, размер по контенту */
+    margin-right: 20px; /* отступ справа, чтобы отодвинуть от текста */
+     display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+
+}
+.footer-icon img {
+  max-width: 100px;
+   height: auto;
+}
+
+/*Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .stat-item {
+        width: calc(50% - 20px);
+    }
+   .footer-content {
+        flex-direction: column;
+    }
+    .contact-details {
+        text-align: center;
+         margin-bottom: 20px;
+    }
+    .footer-icon img {
+       margin-right: 0;
+    }
+    .clients-logos {
+        gap: 50px;
+    }
+}
+/* CSS для скрытия контейнера по умолчанию */
+.feedback-options-container {
+    display: none;
+}
+
+/* CSS для отображения контейнера, когда у него есть класс "active" */
+.feedback-options-container.active {
+    display: block;
+}
+
+/* Стили для формы обратного звонка (по умолчанию скрыта) */
+#callbackForm {
+    display: none;
+    position: fixed; /* Чтобы форма перекрывала контент страницы */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Чтобы форма была поверх всего */
+}
+
+ /* Стили для затемненного фона */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
+    z-index: 999; /* Чтобы фон был под формой, но над всем остальным контентом */
+}
+
+#overlay.active {
+    display: block; /* Показываем фон */
+}
+ /* Стили для результатов поиска */
+/* Общие стили для поиска */
+/* Общие стили для поиска */
+/* Общие стили для поиска */
+.main-nav .search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff; /* Белый фон */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Закругленные углы */
+    display: none;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 15px; /* Отступы внутри блока */
+    transform: translateX(0); /* Убираем центрирование */
+    margin-top: 5px;
+    width: 940px; /*  Начальная ширина  */
+    min-width: auto; /* Удаляем min-width  */
+}
+
+.main-nav .search-box.active {
+    display: block; /* Показываем при активации */
+}
+
+/* Стили для поля ввода */
+.main-nav .search-input {
+    width: 100%; /*  Занимает всю ширину блока  */
+    padding: 10px;
+    border: none; /* Убираем рамку */
+    border-bottom: 1px solid #ddd; /*  Только нижняя граница */
+    border-radius: 0; /* Убираем закругления */
+    font-size: 16px;
+    margin-bottom: 10px; /*  Отступ снизу для текста  */
+    box-sizing: border-box; /* Важно для правильного отображения ширины */
+}
+
+.main-nav .search-input:focus {
+    outline: none; /* Убираем обводку при фокусе */
+    border-bottom: 2px solid #007bff; /* Подчеркивание при фокусе */
+}
+
+/* Стили для крестика (закрытие) */
+.search-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+}
+
+.search-close:hover {
+    color: #333;
+}
+
+/* Стили для текста "Нажмите ввод..." */
+.search-instructions {
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+}
+
+/* Стили для результатов поиска */
+.search-results {
+    margin-top: 10px;
+}
+
+.search-result-item {
+    margin-bottom: 8px;
+}
+
+.search-result-item a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+}
+
+.search-result-item a:hover {
+    background-color: #f0f0f0;
+}

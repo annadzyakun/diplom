@@ -1,0 +1,353 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #606CB3; /* Medium Slate Blue */
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center; /* Center horizontally */
+    }
+
+    /* Header Styles - (Unchanged, assuming already correct) */
+    .header {
+      background-color: #fff;
+      padding: 20px;
+      width: 100%; /* Extend full width */
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+
+    .user-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .user-details {
+      font-size: 14px;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    /* Auth Area Styles (Combined) - (Unchanged) */
+    .auth-area {
+      background-color: #c9f0ff;
+      display: flex;
+      align-items: center;
+      padding: 8px 15px;
+      border-radius: 5px;
+      white-space: nowrap;
+      border: 1px solid #9dd7f1;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .auth-area a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .auth-area a:last-child {
+      margin-right: 0;
+    }
+
+    .auth-area .icon { /* Style for the icon */
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+      display: inline-block;
+    }
+
+    .auth-area .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .auth-area .separator {
+      color: #6c757d;
+      margin: 0 5px;
+    }
+
+    .auth-area a:hover {
+      text-decoration: underline;
+    }
+
+    /* Bottom Navigation Styles - (Unchanged) */
+    .bottom-nav {
+      background-color: #483d8b;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .nav-link svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+      fill: white;
+    }
+
+    /* Auth Form Styles */
+    .auth-form-container {
+    background-color: #606CB3; /* Medium Slate Blue */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure it fills the viewport */
+    padding: 20px;
+    width: 100%;
+}
+
+ .auth-login-form {
+    background-color: #EAF2FF; /*Light Blue almost White*/
+    border-radius: 20px;
+    padding: 30px;
+    width: 450px; /* Increased width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Re-enable flex */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center;/*Added for correct images and form */
+    gap: 20px; /* Reduced space between the sections */
+}
+
+      .auth-login-form h2 {
+      text-align: center;
+      color: #007bff; /* Blue */
+      font-size: 2.0em; /*Increased */
+     margin-bottom: 20px;/*added*/
+    }
+
+
+/* Styles for side buttons for Google Login and Register */
+.auth-other-logins {
+  width: 100%; /* Take up 100% */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ .auth-other-logins button {
+  padding: 15px; /* Increased padding */
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 17px; /* Increased size */
+  text-align: center;
+  width: 100%; /* Ensure full width */
+  margin-bottom: 20px; /* Spacing between buttons */
+  display: flex;
+  align-items: center; /* center img with text */
+  justify-content: center;/*Added */
+  background-color: #3A52B0; /*Indigo almost blue*/
+}
+
+ .auth-other-logins button img {
+    margin-right: 10px; /* space between text and image */
+    width: 20px; /* Size of google images */
+    height: 20px;
+}
+
+.auth-google-login {
+    background-color: #3A52B0; /*Indigo almost blue*/
+    margin-left: 10px;/*Added */
+}
+
+.auth-register-button {
+    background-color: #3A52B0; /*Indigo almost blue*/
+    margin-left: 10px;/*Added */
+}
+
+/* Input Forms */
+ .auth-form-inputs {
+    width: 100%; /* Take up 100% */
+}
+
+   .auth-form-group {
+     margin-bottom: 20px;
+    width: 100%; /*added*/
+   }
+
+  .auth-form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+ }
+
+   .auth-form-group input {
+     width: 100%;
+     padding: 12px;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+     font-size: 16px;
+     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+   .auth-form-options {
+     display: flex;
+     justify-content: space-between;/*changed center*/
+     margin-top: 15px;
+     color: #555;
+     font-size: 0.9em;
+   }
+
+     .auth-form-options a {
+       color: #007bff;
+       text-decoration: none;
+       margin: 0 5px;/*added*/
+       margin-top: 5px;/*added*/
+}
+
+    .auth-form-options a:hover {
+      text-decoration: underline;
+    }
+
+     .auth-login-button {
+       /* Turquoise color that almost as on image*/
+       background-color: #5bc0de;
+       color: #fff;
+       border: none;
+       padding: 12px;/*Smaller button */
+       font-size: 17px;/*Smalller font */
+       border-radius: 7px;
+       cursor: pointer;
+       width: 100%;  /*Adjusted the size for better image fit to elements*/
+       box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+       transition: background-color 0.3s ease;
+       margin-top: 20px;
+       align-items: center;
+}
+
+   .auth-login-button:hover {
+     background-color: #46b8da;
+  }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) { /* For Tablets */
+       .auth-login-form {
+         flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center in column */
+        width: 90%; /* Take more width */
+        gap: 0px;/*Added for correct images and form */
+       }
+
+      .auth-other-logins {
+        width: 100%; /* Make login full width */
+        flex-direction: row; /* Stack Horizontally */
+        justify-content: space-around;
+      }
+
+      .auth-other-logins button{
+        width: 45%;/*Two elements at the same row*/
+        margin: 0px;
+      }
+
+      .auth-form-inputs {
+        width: 100%; /*Inputs to occupy the full width on tablets */
+        margin-top: 20px;
+      }
+
+      .auth-google-login, .auth-register-button{
+        margin-left: 0px; /* Remove side margin */
+      }
+    }
+
+    @media (max-width: 480px) { /* Small Mobiles */
+      .auth-google-login, .auth-register-button{
+        font-size: 15px;
+        padding: 10px;
+        flex-grow: 1;
+      }
+    }
+ /* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

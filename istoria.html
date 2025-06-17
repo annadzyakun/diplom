@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История</title>
+    <link rel="stylesheet" href="istoria.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:wght@400;700&display=swap" rel="stylesheet">
+       <!-- Подключаем jsPDF и html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5; /* Изменено на синий цвет */
+            color: #333;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Занимает всю высоту экрана */
+        }
+
+        /* Header */
+        .lk-header {
+            background-color: #464f96;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .lk-header-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .lk-logo {
+            font-family: 'Spectral SC', serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-right: 50px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .lk-logo-desc {
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: #eee;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .lk-search-container {
+            margin-left: auto;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .lk-search-input {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .lk-search-input::placeholder {
+            color: #eee;
+        }
+
+        .lk-search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #eee;
+        }
+
+        .lk-header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .lk-current-time {
+            color: #fff;
+            font-size: 1rem;
+            margin-right: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .lk-user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .lk-user-info span {
+            margin-right: 10px;
+            color: #eee;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .lk-user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .lk-user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main container */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Sidebar */
+        .lk-sidebar {
+            width: 250px;
+            background-color: #d9edf7;
+            padding: 20px 0;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lk-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lk-sidebar li {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .lk-sidebar a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+            margin: 5px 10px;
+        }
+
+        .lk-sidebar a:hover {
+            background-color: #b0d0df;
+            color: #007bff;
+        }
+
+        .lk-sidebar img {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            opacity: 0.7;
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            background-color: #464f96;
+            padding: 20px;
+            overflow-y: auto;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Collapsed Sidebar state */
+        .main-container.sidebar-collapsed .lk-sidebar {
+            transform: translateX(-100%);
+            width: 0;
+            display: none;
+            box-shadow: none;
+        }
+
+        .main-container.sidebar-collapsed main {
+            margin-left: 0;
+            flex-grow: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+/* Стили для кнопок */
+        .filter-panel button {
+             background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 2px;
+            padding: 0;
+              display: flex;
+            align-items: center;
+        }
+
+        .filter-panel button:hover {
+            opacity: 0.8;
+        }
+
+        .filter-panel button img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        /* Медиа-запрос для печати */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #orders-table, #orders-table * {
+                visibility: visible;
+            }
+            .container {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+         .button-container {
+            display: flex;
+            align-items: center;
+             margin-left: 10px; /* space */
+        }
+
+        .filter-panel {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Changed from flex-start to space-between */
+            flex-wrap: wrap;
+        }
+
+        .filter-panel label {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        .filter-panel input[type="date"],
+        .filter-panel select {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            width: auto;
+        }
+
+        /* Стили для кнопок-изображений */
+        .filter-panel .img-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .filter-panel .img-button:hover {
+            opacity: 0.8;
+        }
+
+        .filter-panel .img-button img {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lk-header">
+        <div class="lk-header-left">
+            <div class="lk-menu-toggle" id="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="lk-logo">
+                Абсолют
+                <span class="lk-logo-desc">ЛИЧНЫЙ КАБИНЕТ</span>
+            </div>
+        </div>
+        <div class="lk-header-right">
+            <span id="current-time" class="lk-current-time"></span>
+            <div class="lk-user-info">
+                <span id="user-name"></span>
+                <div class="lk-user-avatar">
+                    <img src="" alt="Аватар">
+                </div>
+            </div>
+        </div>
+    </header>
+
+   <div class="main-container">
+    <aside class="lk-sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="profile.html">
+                    <img src="https://i.postimg.cc/9Fnyg5BK/icons8-48.png" alt="Профиль">
+                    <span>Профиль</span>
+                </a>
+            </li>
+                       <li>
+                <a href="routlist_man.html">
+                    <img src="https://i.postimg.cc/024Pzc87/route-5522240.png" alt="Маршрутный лист">
+                    <span>Маршрутный лист</span>
+                </a>
+            </li>
+
+          
+            <li>
+                <a href="istoria.html">
+                    <img src="https://i.postimg.cc/0jJZckwk/contract-16632018.png" alt="История">
+                    <span>История</span>
+                </a>
+            </li>
+            <li>
+                <a href="registration.html">
+                    <img src="https://i.postimg.cc/T30Z7jg2/download-308320.png" alt="Регистрация">
+                    <span>Регистрация</span>
+                </a>
+            </li>
+        </ul>
+        <div class="logout-icon">
+            <a href="avtoriz.html">
+                <img src="https://i.postimg.cc/1znwsfzZ/i-12.webp" alt="Выход">
+                <span>Выход</span>
+            </a>
+        </div>
+        </aside>
+        <main>  <!-- Обёрнут контент страницы в тег main -->
+        <div class="container">
+            <h1>Список заказов</h1>
+
+            <!-- Панель фильтров -->
+            <div class="filter-panel">
+                <div>
+                    <label for="start-date">Дата начала:</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div>
+                    <label for="end-date">Дата окончания:</label>
+                    <input type="date" id="end-date">
+                </div>
+                <div>
+                    <label for="employee-select">Сотрудник:</label>
+                    <select id="employee-select">
+                        <option value="">Все</option>
+                        <!-- Сотрудники будут загружаться сюда -->
+                    </select>
+                </div>
+                <button id="apply-filters">Применить фильтры</button>
+                <div class="button-container">
+                    <button class="img-button" onclick="printTable()">
+                        <img src="https://i.postimg.cc/P5NHcKvq/i-12.webp" alt="Печать">
+                    </button>
+                    <button class="img-button" onclick="downloadPDF()">
+                        <img src="https://i.postimg.cc/J01VQQWM/pdf.png" alt="PDF">
+                    </button>
+                </div>
+            </div>
+
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Тип услуги</th>
+                        <th>Метраж</th>
+                        <th>Цена</th>
+                        <th>Сотрудник</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Данные о заказах будут загружаться здесь -->
+                </tbody>
+            </table>
+        </div>
+        </main>
+        <!-- Модальное окно для деталей заказа -->
+        <div id="order-details-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Детали заказа</h2>
+                <div id="order-details-content">
+                    <!-- Информация о заказе будет загружаться здесь -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ordersTable = document.getElementById('orders-table').getElementsByTagName('tbody')[0];
+            const modal = document.getElementById("order-details-modal");
+            const modalContent = document.getElementById("order-details-content");
+            const closeModal = document.querySelector(".close");
+            const filterPanel = document.querySelector(".filter-panel");
+            const startDateInput = document.getElementById('start-date');
+            const endDateInput = document.getElementById('end-date');
+            const employeeSelect = document.getElementById('employee-select');
+            const applyFiltersButton = document.getElementById('apply-filters');
+
+            const applyFilters = () => {
+                const startDate = startDateInput.value;
+                const endDate = endDateInput.value;
+                const employeeId = employeeSelect.value;
+                displayOrders(startDate, endDate, employeeId);
+            };
+
+            async function fetchUserData(userId) {
+                try {
+                    const response = await fetch(`http://localhost:3001/user/${userId}`);
+                    if (!response.ok) {
+                        throw new Error(`Ошибка получения данных пользователя: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error('Ошибка при получении данных пользователя:', error);
+                    return null;
+                }
+            }
+
+            // Отображение имени пользователя и аватара в шапке
+            const userNameSpan = document.getElementById('user-name');
+            const userAvatar = document.querySelector('.lk-user-avatar img');
+
+            async function displayUserName() {
+                const userData = await fetchUserData(userId);
+                if (userData) {
+                    userNameSpan.textContent = `${userData.surname} ${userData.name[0]}.`;
+                    if (userData.photo_path) {
+                        userAvatar.src = `http://localhost:3001${userData.photo_path}`;
+                    } else {
+                        userAvatar.src = `https://via.placeholder.com/40`;
+                    }
+                }
+            }
+
+            // Функция для получения списка сотрудников и добавления их в select
+            async function fetchAndDisplayEmployees() {
+                try {
+                    const response = await fetch('http://localhost:3005/employees');
+                    if (!response.ok) {
+                        throw new Error(`Ошибка получения данных о сотрудниках: ${response.status}`);
+                    }
+                    const employees = await response.json();
+
+                    employeeSelect.innerHTML = '<option value="">Все</option>';
+                    employees.forEach(employee => {
+                        const option = document.createElement('option');
+                        option.value = employee.id;
+                        option.textContent = `${employee.surname} ${employee.name}`;
+                        employeeSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Ошибка при получении данных о сотрудниках:', error);
+                }
+            }
+
+            async function fetchOrdersData(startDate = '', endDate = '', employeeId = '') {
+                try {
+                    let url = `http://localhost:3005/all-orders?startDate=${startDate}&endDate=${endDate}`;
+                    if (employeeId) {
+                        url += `&employeeId=${employeeId}`;
+                    }
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Ошибка получения данных: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error('Ошибка при получении данных:', error);
+                    return [];
+                }
+            }
+
+            async function fetchOrderDetails(orderId) {
+                try {
+                    const response = await fetch(`http://localhost:3005/order/${orderId}`);
+                    if (!response.ok) {
+                        throw new Error(`Ошибка получения деталей заказа: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('Ошибка при получении деталей заказа:', error);
+                    return null;
+                }
+            }
+
+            // Функция для отображения деталей заказа в модальном окне
+            function displayOrderDetails(order) {
+                let cleanerInfo = "Не назначен";
+                if (order.cleaner_name && order.cleaner_surname) {
+                    cleanerInfo = `${order.cleaner_surname} ${order.cleaner_name}`;
+                }
+
+                modalContent.innerHTML = `
+                    <p>ID: ${order.id}</p>
+                    <p>Площадь: ${order.square}</p>
+                    <p>Тип уборки: ${order.cleaning_type}</p>
+                    <p>Периодичность: ${order.periodicity}</p>
+                    <p>Дата уборки: ${order.cleaning_date}</p>
+                    <p>Время уборки: ${order.cleaning_time}</p>
+                    <p>Дополнительные опции: ${order.additional_options}</p>
+                    <p>Комментарий: ${order.order_comment}</p>
+                    <p>Общая стоимость: ${order.total_cost}</p>
+                    <p>ID клиента: ${order.customer_id}</p>
+                    <p>Дата заказа: ${order.order_date}</p>
+                    <p>Исполнитель: ${cleanerInfo}</p>
+                `;
+            }
+
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainContainer = document.querySelector('.main-container');
+            const sidebar = document.getElementById('sidebar');
+            menuToggle.addEventListener('click', function() {
+                mainContainer.classList.toggle('sidebar-collapsed');
+                sidebar.classList.toggle('sidebar-collapsed');
+            });
+
+            applyFiltersButton.addEventListener('click', () => {
+                applyFilters();
+            });
+
+            // Инициализация
+            fetchAndDisplayEmployees();
+            displayOrders();
+
+            async function displayOrders(startDate = '', endDate = '', employeeId = '') {
+                const ordersData = await fetchOrdersData(startDate, endDate, employeeId);
+                ordersTable.innerHTML = '';
+                ordersData.forEach(order => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${order.cleaning_date}</td>
+                        <td>${order.cleaning_type}</td>
+                        <td>${order.square}</td>
+                        <td>${order.total_cost}</td>
+                        <td>${order.cleaner_name ? order.cleaner_name + ' ' + order.cleaner_surname : 'Не назначен'}</td>
+                    `;
+                    row.addEventListener('click', async () => {
+                        const orderDetails = await fetchOrderDetails(order.id);
+                        if (orderDetails) {
+                            displayOrderDetails(orderDetails);
+                            modal.style.display = "block";
+                        }
+                    });
+                    ordersTable.appendChild(row);
+                });
+            }
+
+            window.printTable = function() {
+                window.print();
+            }
+
+            window.downloadPDF = async function() {
+                try {
+                    const pdf = new window.jspdf.jsPDF('landscape');
+                    const table = document.getElementById('orders-table');
+
+                    html2canvas(table).then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+                        const imgWidth = pdf.internal.pageSize.getWidth();
+                        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                        pdf.save('orders.pdf');
+                    });
+
+                } catch (error) {
+                    console.error("Ошибка при создании PDF:", error);
+                    alert("Произошла ошибка при создании PDF. Подробности смотрите в консоли.");
+                }
+            }
+
+            // auth
+            const userId = localStorage.getItem('userId');
+
+            async function fetchAndDisplayEmployees() {
+                try {
+                    const response = await fetch('http://localhost:3005/employees');
+                    if (!response.ok) {
+                        throw new Error(`Ошибка получения данных о сотрудниках: ${response.status}`);
+                    }
+                    const employees = await response.json();
+
+                    employeeSelect.innerHTML = '<option value="">Все</option>';
+                    employees.forEach(employee => {
+                        const option = document.createElement('option');
+                        option.value = employee.id;
+                        option.textContent = `${employee.surname} ${employee.name}`;
+                        employeeSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Ошибка при получении данных о сотрудниках:', error);
+                }
+            }
+
+            displayUserName();
+            fetchAndDisplayEmployees();
+            displayOrders();
+
+            if (!userId) {
+                window.location.href = 'avtoriz.html';
+                console.log("Пользователь не авторизован.");
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

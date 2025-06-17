@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="avtoriz.css">
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+        <link rel="icon" href="лого.png" type="png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+</head>
+<body>
+<header class="header">
+    <div class="header-top">
+        <div class="header-left">
+            <div class="user-icon">
+                <a href="index.html"><img src="https://i.postimg.cc/tg6Wrq0w/5365502.png" alt="User Profile"></a>
+            </div>
+            <div class="user-info">
+                <div class="user-name">Абсолют</div>
+                <div class="user-details">личный кабинет</div>
+            </div>
+        </div>
+        
+    </div>
+</header>
+
+<main class="auth-form-container">
+    <div class="auth-login-form">
+        <div class="auth-other-logins">
+            <h2>ВОЙТИ</h2>
+          
+        </div>
+        <div class="auth-form-inputs">
+            <form id="loginForm" method="post">
+                <div class="auth-form-group">
+                    <label for="username">Логин:</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="auth-form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="auth-form-options">
+                   <a href="#" onclick="showMessage()">Забыли пароль?</a>
+                   <a href="#" onclick="showMessage()">Регистрация</a>
+                </div>
+                <button type="submit" class="auth-login-button">Войти</button>
+            </form>
+        </div>
+    </div>
+    <div id="managerModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Обратитесь к менеджеру за выдачей нового логина и пароля.</p>
+    </div>
+</div>
+</main>
+
+<script>
+      function showMessage() {
+            const modal = document.getElementById("managerModal");
+            modal.style.display = "block";
+
+            const closeBtn = document.querySelector(".close");
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3001/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: username, password: password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Login successful
+                   console.log("Data from server:", data);  // ВАЖНО: Смотрим, что приходит с сервера
+                    alert(data.message); // Show success message
+
+                    // Get the user's role from the response
+                    const userRole = data.user.role;
+                    const userId = data.user.id; // <---- Получаем ID пользователя
+
+                     console.log("User role:", userRole);  // ВАЖНО: Проверяем роль
+                     console.log("User ID:", userId);   // ВАЖНО: Проверяем ID
+
+                    // -------- Очень важно --------
+                    // console.log("Data from server:", data);
+                    // console.log("User role:", userRole);
+                    // console.log("Redirecting to profile.html with ID:", userId); // Проверяем ID
+                    // -------- Очень важно --------
+
+                    // Redirect to a different page based on the user's role
+                     localStorage.setItem('userId', userId);
+                     localStorage.setItem('userRole', userRole);
+
+                    if (userRole === 'manager') {
+                        window.location.href = `profile_man.html`; // ОБРАТНЫЕ КАВЫЧКИ!!
+                    } else if (userRole === 'cleaner') {
+                        window.location.href = `profile.html`;  //ОБРАТНЫЕ КАВЫЧКИ!!
+                    }
+
+                    else {
+                        window.location.href = "avtoriz.html";
+                    }
+
+                    // You can also store user data in local storage or a cookie
+                    // to keep the user logged in
+                } else {
+                    // Login failed
+                    alert(data.message); // Show error message
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
+            }
+        });
+    });
+</script>
+</body>
+</html>

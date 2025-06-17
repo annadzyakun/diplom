@@ -1,0 +1,338 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header */
+.lk-header {
+    background-color: #464f96;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+
+.lk-header-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.lk-logo {
+    font-family: 'Spectral SC', serif; /* Новый шрифт */
+    font-size: 2.5rem; /* Значительно больше */
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 50px; /* Увеличиваем расстояние до поиска */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-logo-desc {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-search-container {
+    margin-left: auto;
+    margin-right: 20px;
+    position: relative;
+}
+
+.lk-search-input {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.lk-search-input::placeholder {
+    color: #eee;
+}
+
+.lk-search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+}
+
+.lk-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.lk-current-time {
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.lk-user-info span {
+    margin-right: 10px;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lk-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 10px;
+    border: 2px solid #ddd;
+}
+
+.lk-user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main container */
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px);
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar */
+.lk-sidebar {
+    width: 250px;
+    background-color: #d9edf7;
+    padding: 20px 0;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.lk-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lk-sidebar li {
+    padding: 10px; /* Add padding to li */
+    margin-bottom: 10px; /* Add margin to li */
+}
+
+.lk-sidebar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    margin: 5px 10px;
+}
+
+.lk-sidebar a:hover {
+    background-color: #b0d0df;
+    color: #007bff;
+}
+
+.lk-sidebar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    opacity: 0.7;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Чтобы элементы располагались вертикально */
+    gap: 20px;
+}
+
+/* Styles for date selector */
+.date-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent White */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow */
+    color: white; /* Set text color to white */
+    backdrop-filter: blur(5px); /* Apply blur to the background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Add a subtle border */
+    margin-bottom: 20px;
+}
+
+.date-selector button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.date-selector button:hover {
+    color: #bbdefb;
+}
+
+#date-range,
+#current-date {
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Table Styles */
+#schedule {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#schedule th,
+#schedule td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#schedule th {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#schedule td {
+    font-size: 1rem;
+}
+
+/* Alternating row styles */
+#schedule tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#schedule tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для clickable-ячейки (ячейки с заказом) */
+.clickable-cell {
+    cursor: pointer; /* Изменяем курсор на руку */
+    transition: background-color 0.3s ease;
+}
+
+.clickable-cell:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Затемняем фон при наведении */
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1; /* Поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включить прокрутку, если необходимо */
+    background-color: rgba(0,0,0,0.4); /* Черный с прозрачностью */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% сверху и по центру */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Можно настроить размер */
+    position: relative; /* Для позиционирования кнопки закрытия */
+}
+/* Form styles inside the modal window */
+#assign-employee-form {
+    margin-top: 15px;
+}
+
+#assign-employee-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#assign-employee-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#assign-employee-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#assign-employee-form button:hover {
+    background-color: #367C39;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+ /* Collapsed Sidebar styles */
+.main-container.sidebar-collapsed .lk-sidebar {
+    transform: translateX(-100%); /* Hide sidebar */
+    width: 0;
+    padding: 20px 0; /* Keep padding so there is no content overlap */
+    display: none; /* Hide completely */
+    box-shadow: none; /* Remove box-shadow when collapsed */
+}
+
+.main-container.sidebar-collapsed main {
+    margin-left: 0; /* Основной контент занимает всю ширину */
+    width: 100%; /* Fully take all space */
+    flex: 1; /* Allow main content to take all available space */
+}
